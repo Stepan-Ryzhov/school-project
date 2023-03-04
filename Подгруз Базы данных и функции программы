@@ -1,0 +1,32 @@
+with open("57.txt", encoding='windows-1251') as f:
+    data = f.read()
+    new_data = data.replace(" ' ", ' " ')
+diction = json.loads(new_data)
+
+
+def checking():
+    if str(ent_name.get()) in diction:
+        messagebox.showinfo('Книги на руках', diction[str(ent_name.get())])
+    else:
+        messagebox.showinfo('Человека нет в базе', "Этого ученика нет в базе данных. Вы можете добавить ему книгу в "
+                                                   "поле ниже.")
+
+
+def updt():
+    messagebox.showinfo('Успешно добавлено', "Книга успешно добавлена")
+    diction[str(ent_name.get())] = str(ent_updt.get())
+    with open('57.txt', 'w', encoding='windows-1251') as upd_data:
+        d = str(diction)
+        new = d.replace("'", '"')
+        upd_data.write(''.join(new))
+    upd_data.close()
+
+
+def delet():
+    messagebox.showinfo('Успешно удалено', "Книга успешно удалена")
+    with open('57.txt', 'w', encoding='windows-1251') as delet_data:
+        diction.pop(str(ent_name.get()))
+        d = str(diction)
+        new = d.replace("'", '"')
+        delet_data.write(''.join(new))
+    delet_data.close()
