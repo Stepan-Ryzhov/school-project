@@ -1,0 +1,38 @@
+#СОЗДАНИЕ GUI ОКНА
+window = tk.Tk()
+window.title("База данных библиотеки Школы № 1501")
+window.rowconfigure(0, minsize=800, weight=1,)
+window.columnconfigure(1, minsize=800, weight=1)
+window.resizable(0,0)
+
+frm_form = tk.Frame(borderwidth=3, background='#34A2FE')
+frm_form.pack()
+
+frm_u = tk.Frame(borderwidth=3,  background='#34A2FE')
+frm_u.pack()
+
+frm_buttons = tk.Frame()
+frm_buttons.pack(ipadx=4, ipady=5)
+
+lbl_name = tk.Label(master=frm_form, text="Фамилия и Имя ученика:", background='#34A2FE', font=("Calibri", 12))
+ent_name = tk.Entry(master=frm_form, width=35)
+
+lbl_name.grid(row=0, column=0)
+ent_name.grid(row=0, column=1)
+
+btn_check = tk.Button(master=frm_form, text="Проверить книги", command=checking, font=("Calibri", 10), bg="white")
+btn_check.grid(row=1, column=0, padx=2, pady=5, sticky='w')
+
+btn_updt = tk.Button(master=frm_u, text="Добавить книгу", command=updt, font=("Calibri", 10), bg="white")
+btn_updt.grid(row=1, column=0, padx=5, pady=5, sticky='w')
+
+btn_delet = tk.Button(master=frm_u, text="Удалить книгу", command=delet, font=("Calibri", 10), bg="white")
+btn_delet.grid(row=1, column=1, padx=5, pady=5, sticky='w')
+
+lbl_updt = tk.Label(master=frm_u, text="Автор и книга:", background='#34A2FE', font=("Calibri", 12))
+ent_updt = tk.Entry(master=frm_u, width=47)
+
+lbl_updt.grid(row=0, column=0, sticky='w')
+ent_updt.grid(row=0, column=1)
+
+window.mainloop()
